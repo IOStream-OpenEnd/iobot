@@ -27,7 +27,7 @@ exports.run = (client, message) => { // eslint-disable-line no-unused-vars
 
     // Defines Embed
     let embed = new Discord.RichEmbed()
-        .setAuthor(`About ZeroBot`)
+        .setAuthor(`About Io Bot`)
         .setColor(`#e8c123`)
         .setDescription(
             "_IO Bot_ is a custom built bot written in JavaScript using DiscordJS API and `discord.js` library.")
