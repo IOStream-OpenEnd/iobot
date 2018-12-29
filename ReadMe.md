@@ -5,7 +5,7 @@
 - Clone your fork to your local machine
 - CD into the bots root directory
 - Run `npm install`
-- Copy the contents of tokens-EXAMPLE.json into a new file called tokens.json, entering your own Discord Bot token (see below)
+- Get bot token and put it in `client.login('token here');`
 - Run `nodemon` on `node bot.js`
 
 Once the bot boots up, check for a URL in your command prompt. It will start with (https://discordapp.com/oauth2/authorize?client_id=). Copy and paste this link into your browser and then select the server you wish to invite your testing bot too.
