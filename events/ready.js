@@ -7,12 +7,12 @@ module.exports = async client => {
     setInterval( async () => {
       client.appInfo = await client.fetchApplication();
     }, 60000);
-   
+   console.log(client.users.filter(m => !m.bot).size)
     // Set the Bots Status
     client.user.setStatus('dnd')
     client.user.setPresence({
         game: {
-            name: `over ${client.users.size} Users!`,
+            name: `over ${client.guild.members.filter(m => !m.user.bot).size} Users!`,
             type: "WATCHING",
             url: "https://www.twitch.tv/monstercat"
         }
