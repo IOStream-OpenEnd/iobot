@@ -8,7 +8,7 @@ client.commands = new Discord.Collection();
 client.aliases = new Discord.Collection();
 
 // Require Congigs, Functions and Modules
-client.settings = {} = require("./config.js");
+client.settings = {} = require("./config.js")(client);
 require("./modules/functions.js")(client);
 
 const init = async () => {
@@ -34,15 +34,9 @@ const init = async () => {
         client.on(eventName, event.bind(null, client));
     });
 
-    // Generate a cache of client permissions for pretty perm names in commands.
-    client.levelCache = {};
-    for (let i = 0; i < client.settings.permLevels.length; i++) {
-        const thisLevel = client.settings.permLevels[i];
-        client.levelCache[thisLevel.name] = thisLevel.level;
-    }
 
-    client.login(process.env.BOT_TOKEN);
+
+    client.login(client.settings.token);
 }
 
 init()
-require('http').createServer().listen(3000);
