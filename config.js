@@ -4,7 +4,7 @@ module.exports = (client) => {
     // Eg. client.settings.token
 
     // Set Token Variable
-    "token": "process.env.BOT_TOKEN",
+    "token": process.env.BOT_TOKEN,
     
     // Set bots prefix
     "prefix": "+",

@@ -17,7 +17,9 @@ exports.help = {
 exports.run = (client, message) => { // eslint-disable-line no-unused-vars
 
     const contributors = [
-        ["Abdus", "https://github.com/thisisabdus"]
+        ["Abdus", "https://github.com/thisisabdus"],
+        ["Matt", "https://github.com/MattCSmith"],
+        ["Ankur", "https://github.com/anantAnkur"]
     ]
     
 
