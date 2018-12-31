@@ -40,3 +40,6 @@ const init = async () => {
 }
 
 init()
+
+// this LoC is needed in order to deploy it to Zeit 
+require('http').createServer().listen(3000);
