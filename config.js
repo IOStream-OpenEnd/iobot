@@ -5,6 +5,9 @@ module.exports = (client) => {
 
     // Set Token Variable
     "token": "process.env.BOT_TOKEN",
+
+    // Server ID
+    "serverID": "524880564302381056",
     
     // Set bots prefix
     "prefix": "+",
@@ -14,9 +17,6 @@ module.exports = (client) => {
 
     //set bot activity type, choose from: "PLAYING", "LISTENING", "WATCHING"
     "botActivity": "WATCHING",
-
-    // Set bots activity message
-    "botActivityMessage": `over ${client.users.filter(m => !m.bot).size} Users!`,
 
     //Commonly used channels, call them with `client.setting.channels.<name>`
     "channels": {

@@ -6,9 +6,10 @@ module.exports = async client => {
     client.user.setStatus(client.settings.botStatus)
 
     // Sets the bot "playing game message"
+    const io = client.guilds.get(client.settings.serverID)
     client.user.setPresence({
         game: {
-            name: client.settings.botActivityMessage,
+            name: `over ${io.members.filter(member => !member.user.bot).size} Users!`,
             type: client.settings.botActivity
         }
     });
