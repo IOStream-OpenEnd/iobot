@@ -17,14 +17,11 @@ TD.addRule('mark', {
 
 exports.conf = {
     enabled: true,
-    guildOnly: false,
-    aliases: ['m', 'moz', 'docs'],
-    permLevel: "User"
+    aliases: ['m', 'moz', 'docs']
 };
 
 exports.help = {
     name: "mdn",
-    category: "Miscelaneous",
     description: "Search Docs from MDN",
     usage: "mdn random | mdn search [QUERY]"
 };

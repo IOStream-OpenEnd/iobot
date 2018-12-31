@@ -5,17 +5,13 @@ const Discord = require("discord.js");
 
 exports.conf = {
     enabled: true,
-    guildOnly: false,
-    aliases: ["test"],
-    permLevel: "User"
+    aliases: ["test"]
 };
 
 exports.help = {
     name: "aboutbot",
-    category: "Miscelaneous",
     description: "Display info about the bot and its contributors",
-    usage: "about",
-    icon: "http://icons.iconarchive.com/icons/oxygen-icons.org/oxygen/256/Actions-help-about-icon.png"
+    usage: "about"
 };
 
 exports.run = (client, message) => { // eslint-disable-line no-unused-vars
