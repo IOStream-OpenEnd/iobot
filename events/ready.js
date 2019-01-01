@@ -24,4 +24,5 @@ module.exports = async client => {
     } catch (e) {
         console.log(e.stack)
     }
+    client.checkYoutube()
 };

@@ -10,7 +10,7 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "discord.js": "^11.4.0",
+    "discord.js": "^11.4.2",
     "node-fetch": "^2.3.0",
     "turndown": "^5.0.1"
   },

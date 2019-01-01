@@ -37,6 +37,7 @@ const init = async () => {
 
 
     client.login(client.settings.token);
+    
 }
 
 init()

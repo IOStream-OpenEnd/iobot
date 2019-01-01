@@ -1,4 +1,32 @@
+const fetch = require('node-fetch');
+fs = require('fs');
+
 module.exports = (client) => {
+
+  client.checkYoutube = async () => {
+    // Load local data file
+    let data = JSON.parse(fs.readFileSync("./data/youtube-videos.json", "utf8"));
+    // Fetch YT-Channel Stats
+    await fetch(`https://www.googleapis.com/youtube/v3/channels?part=statistics&id=${client.settings.youtubeID}&key=${client.settings.tokens.youtubeKey}`)
+      .then(res => res.json())
+      .then(json => data.stats = json.items[0].statistics)
+
+    // Fetch YT-Channel Content Info
+    await fetch(`https://www.googleapis.com/youtube/v3/search?key=${client.settings.tokens.youtubeKey}&channelId=${client.settings.youtubeID}&part=snippet,id&order=date&maxResults=50`)
+      .then(res => res.json())
+      .then(json =>
+        json.items.forEach(item => {
+          if (item.id.videoId && !data.ids.includes(item.id.videoId)) {
+            data.ids.push(item.id.videoId)
+            data.content.push(item)
+            client.commands.get('video').run(client, "bot", [item, data.stats])
+          }
+        })
+      );
+    fs.writeFile("./data/youtube-videos.json", JSON.stringify(data), (err) => {
+      if (err) console.error(err)
+    });
+  }
 
   client.loadCommand = (commandName) => {
     try {
