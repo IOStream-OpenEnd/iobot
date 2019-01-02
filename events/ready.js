@@ -20,5 +20,5 @@ module.exports = async client => {
     }
 
     // Checks for new youtube videos
-    // client.checkYoutube()
+    client.checkYoutube()
 };

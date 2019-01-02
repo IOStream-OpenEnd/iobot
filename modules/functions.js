@@ -19,12 +19,12 @@ module.exports = (client) => {
     // Load local data file
     let data = JSON.parse(fs.readFileSync("./data/youtube-videos.json", "utf8"));
     // Fetch YT-Channel Stats
-    await fetch(`https://www.googleapis.com/youtube/v3/channels?part=statistics&id=${client.settings.youtubeID}&key=${client.settings.tokens.youtubeKey}`)
+    await fetch(`https://www.googleapis.com/youtube/v3/channels?part=statistics&id=${client.settings.youtubeID}&key=${client.settings.ytapi}`)
       .then(res => res.json())
       .then(json => data.stats = json.items[0].statistics)
 
     // Fetch YT-Channel Content Info
-    await fetch(`https://www.googleapis.com/youtube/v3/search?key=${client.settings.tokens.youtubeKey}&channelId=${client.settings.youtubeID}&part=snippet,id&order=date&maxResults=50`)
+    await fetch(`https://www.googleapis.com/youtube/v3/search?key=${client.settings.ytapi}&channelId=${client.settings.youtubeID}&part=snippet,id&order=date&maxResults=50`)
       .then(res => res.json())
       .then(json =>
         json.items.forEach(item => {
