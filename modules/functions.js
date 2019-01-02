@@ -3,6 +3,18 @@ fs = require('fs');
 
 module.exports = (client) => {
 
+  client.setUserCount = async () => {
+    const io = client.guilds.get(client.settings.serverID)
+    await io.fetchMembers()
+    let uCount = io.members.filter(member => !member.user.bot).size
+    client.user.setPresence({
+      game: {
+        name: `over ${uCount} Users!`,
+        type: "WATCHING"
+      }
+    });
+  }
+
   client.checkYoutube = async () => {
     // Load local data file
     let data = JSON.parse(fs.readFileSync("./data/youtube-videos.json", "utf8"));

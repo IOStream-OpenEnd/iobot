@@ -6,13 +6,7 @@ module.exports = async client => {
     client.user.setStatus(client.settings.botStatus)
 
     // Sets the bot "playing game message"
-    const io = client.guilds.get(client.settings.serverID)
-    client.user.setPresence({
-        game: {
-            name: `over ${io.members.filter(member => !member.user.bot).size} Users!`,
-            type: client.settings.botActivity
-        }
-    });
+    client.setUserCount()
 
     // Log that the bot is online.
     console.log(`${client.user.tag}, ready to serve ${client.users.size} users in ${client.guilds.size} servers.`);
@@ -24,5 +18,7 @@ module.exports = async client => {
     } catch (e) {
         console.log(e.stack)
     }
-    client.checkYoutube()
+
+    // Checks for new youtube videos
+    // client.checkYoutube()
 };
