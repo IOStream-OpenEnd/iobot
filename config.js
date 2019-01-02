@@ -4,19 +4,26 @@ module.exports = (client) => {
     // Eg. client.settings.token
 
     // Set Token Variable
-    "token": process.env.BOT_TOKEN,
+    "token": require('./tokens.json').token,
+
+    // Local Tokens
+    "tokens": require('./tokens.json'),
 
     // Server ID
-    "serverID": "524880564302381056",
+    "serverID": "504977712792731678",
     
     // Set bots prefix
     "prefix": "+",
+
 
     // Set bot status, choose from: "online", "away", "dnd", "invisible"
     "botStatus": "dnd",
 
     //set bot activity type, choose from: "PLAYING", "LISTENING", "WATCHING"
     "botActivity": "WATCHING",
+
+    // Youtube ID
+    "youtubeID": "UC9S1O55MD9kzL5wRDFL_o5A",
 
     //Commonly used channels, call them with `client.setting.channels.<name>`
     "channels": {
