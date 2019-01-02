@@ -4,13 +4,13 @@ module.exports = (client) => {
     // Eg. client.settings.token
 
     // Set Token Variable
-    "token": require('./tokens.json').token,
+    "token": process.env.BOT_TOKEN,
 
-    // Local Tokens
-    "tokens": require('./tokens.json'),
+    // Youtube API Toke:
+    "ytapi": process.env.YT_TOKEN,
 
     // Server ID
-    "serverID": "504977712792731678",
+    "serverID": "524880564302381056",
     
     // Set bots prefix
     "prefix": "+",

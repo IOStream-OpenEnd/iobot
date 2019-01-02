@@ -40,7 +40,7 @@ const checkForNewVideos = async (client, args) => {
         ["Video Count", `:tv: ${stats.videoCount}`, true]
     ]
     client.sendembed({
-        "method": client.channels.get("522200016245489664"),
+        "method": client.channels.get("530080830962401295"),
         "author": ["I.O. Stream - Posted a new video!", client.user.avatarURL],
         "url": `https://www.youtube.com/watch?v=${args[0].id.videoId}`,
         "thumb": "https://cdn0.iconfinder.com/data/icons/social-flat-rounded-rects/512/youtube_v2-512.png",
