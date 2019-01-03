@@ -1,9 +1,9 @@
 exports.run = async (client, message, args) => { // eslint-disable-line no-unused-vars
 console.log("args", args)
-    // if(message === "bot") checkForNewVideos(client, args)
-    // else{
+    if(message === "bot") checkForNewVideos(client, args)
+    else{
         if(!args[0]) showLatest(client, message)
-    // }
+    }
 
 };
 
