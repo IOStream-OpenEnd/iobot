@@ -36,7 +36,7 @@ module.exports = (client) => {
         })
       );
     fs.writeFile("./data/youtube-videos.json", JSON.stringify(data), (err) => {
-      if (err) console.error(err)
+      // if (err) console.error(err)
     });
   }
 

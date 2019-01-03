@@ -29,7 +29,6 @@ exports.help = {
 // __main__
 let fields, result;
 exports.run = (client, message, args) => { // eslint-disable-line no-unused-vars
-  console.log(message.content)
 
     if (args[0] === 'random') {
         let randomQuery = arrRandomQuery[(Math.random() * 10).toFixed(0)];
