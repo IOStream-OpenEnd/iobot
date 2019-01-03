@@ -10,7 +10,6 @@ exports.run = async (client, message, args, level) => { // eslint-disable-line n
             [":large_orange_diamond:  Limit emojis and caps", "Do NOT spam (Excessive Use Of) Emojis, Emotes And Caps.", true],
             [":large_orange_diamond:  Relevant Channels", "Use all channels accordingly. Any member seen using chats for any other purpose will be given a warning and then muted.", true],
             [":large_orange_diamond:  No Self Promotion", "Absolutely NO Self Promotion. This includes links to other discord servers, YouTube etc", true],
-            [":large_orange_diamond:  Rank Assignment", "Do NOT ask for any roles/ranks. Appropriate roles will be assigned by staff.", true],
             [":large_orange_diamond:  Privacy", "Do NOT send/ask for personal and private information of other members."],
             [":large_orange_diamond:  Decissions are Final", "Do NOT argue or create drama related to staff actions. All staff actions are final and will not be changed. If any mod is at fault, take it to that particular mod's DMs."],
             [":large_orange_diamond:  Pings", "Do NOT use the @everyone or @here ping, use other role tags and member mentions sensibly."],

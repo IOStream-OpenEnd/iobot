@@ -5,12 +5,12 @@ exports.run = async (client, message, args, level) => { // eslint-disable-line n
         "title": "Handy Links",
         "desc": "Here are some links that you might find useful!",
         "fields": [
-           ["Youtube:", "[Here](https://www.youtube.com/channel/UC9S1O55MD9kzL5wRDFL_o5A)", true],
-           ["Twitter:","[Here](https://twitter.com/IOStreamTweets)", true],
-           ["Facebook:","[Here](https://www.facebook.com/10stream)", true],
-           ["Instagram","[Here](https://www.instagram.com/i.o.stream)", true],
-           ["Supragya's Github:","[Here](https://github.com/supragya)", true],
-           ["OpenEnd Org Github", "[Here](https://github.com/IOStream-OpenEnd)", true]
+           ["Youtube:", "[I.O. Stream](https://www.youtube.com/channel/UC9S1O55MD9kzL5wRDFL_o5A)", true],
+           ["Twitter:","[@IOStreamTweets](https://twitter.com/IOStreamTweets)", true],
+           ["Facebook:","[@10stream](https://www.facebook.com/10stream)", true],
+           ["Instagram","[@i.o.stream](https://www.instagram.com/i.o.stream)", true],
+           ["Github:","[@supragya](https://github.com/supragya)", true],
+           ["Github", "[@IOStream OpenEnd](https://github.com/IOStream-OpenEnd)", true]
         ]
     })
 
