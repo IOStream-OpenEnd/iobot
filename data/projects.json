@@ -1,11 +1,9 @@
-const projects = [
-
+[
     {
         "name": "magikm0ments",
         "manager": "130519552361496577",
         "lang": "Python",
         "status": "Nearing completion",
-        // The Projects Channel ID
         "link": "525564160365297694"
     },
     {
@@ -30,6 +28,4 @@ const projects = [
         "link": "530047749329125406"
     }
 
-];
-
-module.exports = projects;
+]
