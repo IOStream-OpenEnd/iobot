@@ -82,9 +82,9 @@ module.exports = (client) => {
     
     let newMember = await client.users.get(member.user.id)
     client.channels.get("524880564302381058").send(newMember.toString());
-    
+
     client.sendembed({
-      "method": client.channels.get("467378225144791051"),
+      "method": client.channels.get("524880564302381058"),
       "author": ["I.O. Stream", client.user.avatarURL],
       "thumb": "https://media.discordapp.net/attachments/467378225144791051/530332456155480094/welcome.png",
       "title": `Welcome to IO Stream`,
