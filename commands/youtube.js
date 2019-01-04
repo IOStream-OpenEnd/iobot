@@ -54,11 +54,11 @@ const checkForNewVideos = async (client, args) => {
 
 exports.conf = {
     enabled: true,
-    aliases: [],
+    aliases: ["yt"],
 };
 
 exports.help = {
-    name: "video",
+    name: "youtube",
     description: "Announces a new video",
-    usage: "ping"
+    usage: "youtube"
 };

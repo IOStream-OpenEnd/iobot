@@ -31,7 +31,7 @@ module.exports = (client) => {
           if (item.id.videoId && !data.ids.includes(item.id.videoId)) {
             data.ids.push(item.id.videoId)
             data.content.push(item)
-            client.commands.get('video').run(client, "bot", [item, data.stats])
+            client.commands.get('youtube').run(client, "bot", [item, data.stats])
           }
         })
       );
