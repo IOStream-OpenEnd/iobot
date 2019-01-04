@@ -30,8 +30,9 @@ exports.run = async (client, message, args) => { // eslint-disable-line no-unuse
         }
     ]
     const getChan = (id) => {
-        if(!id || !message.guild.channels.get(id)) return "TBC"
-        else return message.guild.channels.get(id).toString()
+        const guild = client.guilds.get(client.settings.serverID)
+        if(!id || !guild.channels.get(id)) return "TBC"
+        else return guild.channels.get(id).toString()
     }
     let fileds = [];
     projects.forEach(p => {

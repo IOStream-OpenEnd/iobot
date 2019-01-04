@@ -82,6 +82,7 @@ module.exports = (client) => {
     
     let newMember = await client.users.get(member.user.id)
     client.channels.get("524880564302381058").send(newMember.toString());
+    const guild = client.guilds.get(client.settings.serverID)
 
     client.sendembed({
       "method": client.channels.get("524880564302381058"),
@@ -89,7 +90,7 @@ module.exports = (client) => {
       "thumb": "https://media.discordapp.net/attachments/467378225144791051/530332456155480094/welcome.png",
       "title": `Welcome to IO Stream`,
       "color": "#ff0000",
-      "desc": `Hey _${member.user.username}_ Welcome to the I.0.Space Discord Server. We are thrilled that you have joined I.0.Stream community. Please be sure to check out the #weclome channel and then head on over to #projects-overview for more information on the project you can contribute to. If you have an questions of suggestions, please reach out to a mod.`
+      "desc": `Hey _${member.user.username.toString()}_ Welcome to the I.0.Space Discord Server. We are thrilled that you have joined I.0.Stream community. Please be sure to check out the ${guild.channels.get(525565229480935424).toString()} channel and then head on over to ${guild.channels.get(530790632021557255).toString()} for more information on the project you can contribute to. If you have an questions of suggestions, please reach out to a moderator.`
     })
   }
 };
