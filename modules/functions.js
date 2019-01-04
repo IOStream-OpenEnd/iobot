@@ -74,4 +74,22 @@ module.exports = (client) => {
     console.log(`Unhandled rejection: ${err}`);
   });
 
+
+  /**
+   * Send a welcome message to the newly joined members
+   */
+  client.welcomeNewMembers = async (member) => {
+    
+    let newMember = await client.users.get(member.user.id)
+    client.channels.get("524880564302381058").send(newMember.toString());
+    
+    client.sendembed({
+      "method": client.channels.get("467378225144791051"),
+      "author": ["I.O. Stream", client.user.avatarURL],
+      "thumb": "https://media.discordapp.net/attachments/467378225144791051/530332456155480094/welcome.png",
+      "title": `Welcome to IO Stream`,
+      "color": "#ff0000",
+      "desc": `Hey _${member.user.username}_ Welcome to the I.0.Space Discord Server. We are thrilled that you have joined I.0.Stream community. Please be sure to check out the #weclome channel and then head on over to #projects-overview for more information on the project you can contribute to. If you have an questions of suggestions, please reach out to a mod.`
+    })
+  }
 };

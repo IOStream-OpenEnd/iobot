@@ -34,8 +34,6 @@ const init = async () => {
         client.on(eventName, event.bind(null, client));
     });
 
-
-
     client.login(client.settings.token);
     
 }
