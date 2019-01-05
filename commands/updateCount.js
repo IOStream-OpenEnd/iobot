@@ -1,5 +1,8 @@
 exports.run = async (client, message, args, level) => { // eslint-disable-line no-unused-vars
-    client.setUserCount(true)
+  if(!args[0]) client.setUserCount(true)
+  else if(args[0] === "join") {
+    client.emit("guildMemberAdd", message.member);
+  }
    };
    
    exports.conf = {

@@ -1,56 +1,88 @@
-exports.run = async (client, message, args) => { // eslint-disable-line no-unused-vars
-    const projects = [
-        {
-            "name": "magikm0ments",
-            "manager": "130519552361496577",
-            "lang": "Python",
-            "status": "Nearing completion",
-            "link": "525564160365297694"
-        },
-        {
-            "name": "b3atsc0mpiler",
-            "manager": "527794552757813248",
-            "lang": "Python",
-            "status": "Nearing completion",
-            "link": "528276844118802435"
-        },
-        {
-            "name": "io-bot",
-            "manager": "179604866807627777",
-            "lang": "Javascript",
-            "status": "Just Started",
-            "link": "529351678466719755"
-        },
-        {
-            "name": "composiAI",
-            "manager": "525170427803467776",
-            "lang": "Python",
-            "status": "Just Started",
-            "link": "530047749329125406"
-        }
-    ]
-    const getChan = (id) => {
-        const guild = client.guilds.get(client.settings.serverID)
-        if(!id || !guild.channels.get(id)) return "TBC"
-        else return guild.channels.get(id).toString()
-    }
-    let fileds = [];
-    projects.forEach(p => {
-        let manager = (p.manager ? p.manager : `179604866807627777`)
-        fileds.push(
-            [p.name.toUpperCase(), `**Manager:** ${client.users.get(manager).toString()}\n**Language:** ${p.lang}\n**Status:** ${p.status}\n**Channel:** ${getChan(p.link)}`, true],
-        )
-    });
+const fetch = require('node-fetch');
+const moment = require('moment');
 
-    client.sendembed({
+const data = {
+    "MagikMoments": { "status": "Complete", "manager": "K-11"},
+    "BeatsCompiler": { "status": "unknown", "manager": "shawayusx"},
+    "iobot": { "status": "Just started", "manager": "Mattchow"},
+    "composeai": { "status": "Just Started", "manager": "DeveloperGuruji"}
+}
+
+const logo = { python: ["http://www.stickpng.com/assets/images/5848152fcef1014c0b5e4967.png", "#4B8BBE"], javascript: ["http://pluspng.com/img-png/logo-javascript-png-javascript-tutorials-400.png", "#f7df1e"]}
+
+exports.run = async (client, message, args) => { // eslint-disable-line no-unused-vars
+
+
+    // Fetch project data from github
+    let projects;
+    await fetch(`https://api.github.com/orgs/IOStream-OpenEnd/repos`)
+        .then(res => res.json())
+        .then(json => projects = json)
+
+    // Route Command Args
+    if(!args[0]) message.channel.send(`You didnt specify a project name. Please checkout ${getChan(message, "projects-overview")} for more information on projects`)
+    else if (args[0] === "init") menuInit(client, message, projects)
+    else {
+        const proj = projects.find(p => p.name === args[0])
+        if(proj) sendProject(client, message, proj)
+        else message.channel.send(`We could not find a project matching that name. Please check out ${getChan(message, "projects-overview")} for more information on available projects`)
+    }
+};
+
+const getChan = (message, name) => {
+    const chan = message.guild.channels.find("name", name.toLowerCase())
+    if(chan === null || chan === undefined) return `**Channel Not Found (#${name})**`
+    else return chan.toString()
+}
+
+const menuInit = async (client, message, projects) => {
+    if(message.member.roles.some(r=>["Admin", "Moderator"].includes(r.name)) ) {
+    let modRole = message.guild.roles.find(role => role.name === "Moderators");
+    await client.sendembed({
         "method": message.channel,
         "color": "#000",
         "title": "OpenEnd Projects",
-        "desc": `There are currently ${projects.length} opensource projects available for you to join, you will find information on these below. \n\n**Suggest a Project Idea?**\nIf you have an idea for a project, head on over to ${getChan(525245488488906753)} to make your project suggestion.\n\n**Want to lead a project?**\nIf you would like to lead a project, simply have a chat with a moderator and they will be able to get everything set up for you.`,
-        "fields": fileds
-
+        "url": "https://github.com/IOStream-OpenEnd/",
+        "thumb": projects[0].owner.avatar_url,
+        "desc": `There are currently ${projects.length} opensource projects available for you to join. To participate in a project, find one that you would be interested in joining and contact the project manager, who will then be able to get you set up and ready to collaborate.`,
+        "fields": [
+            ["Suggest a Project Idea?", `If you have an idea for a project, head on over to ${getChan(message, "project-ideas")} to make your project suggestion.`],
+            ["Want to lead a project?", `If you would like to lead a project, simply have a chat with a ${modRole.toString()} and they will be able to get everything set up for you.`]
+        ]
     })
-};
+
+    projects.forEach(p => {
+        sendProject(client, message, p)
+    });
+    }else message.channel.send("This command is designed to re-populate the #projects-overview channel and requires Moderators permission level or above. Please contact a Moderator if you think this really needs posting again.")
+
+}
+
+
+
+const sendProject = (client, message, p) => {
+    let mana = (data[p.name] ? client.users.find("username", data[p.name]["manager"]) : "Unknown");
+
+
+    client.sendembed({
+        "method": message.channel,
+        "color": (p.language !== null ? logo[p.language.toLowerCase()][1] : ""),
+        "title": p.name,
+        "desc": p.description,
+        "thumb": (p.language !== null ? logo[p.language.toLowerCase()][0] : ``),
+        "fields": [
+            ["Project Manager", mana, true],
+            ["Discussion Channel", getChan(message, p.name), true],
+            ["Project Language", p.language, true],
+            ["Project Status", (data[p.name] ? data[p.name]["status"] : "Unknown"), true],
+            ["GitHub Repository", `[Here](${p.html_url})`, true],
+            ["Issues", p.open_issues, true],
+            ["Forks", p.forks, true],
+            ["Stars", p.stargazers_count, true]
+        ],
+        "footer": "Project Started: " + moment(p.created_at).format('MMMM Do YYYY, h:mm:ss a')
+    })
+}
 
 exports.conf = {
     enabled: true,
