@@ -79,11 +79,9 @@ module.exports = (client) => {
    * Send a welcome message to the newly joined members
    */
   client.welcomeNewMembers = async (member) => {
-    
-    let newMember = await client.users.get(member.user.id)
-    // client.channels.get("524880564302381058").send(newMember.toString());
 
     client.sendembed({
+      "ping": member.toString(),
       "method": member.guild.channels.find("name", "iobot"),
       "author": ["I.O. Stream", client.user.avatarURL],
       "thumb": "https://media.discordapp.net/attachments/467378225144791051/530332456155480094/welcome.png",

@@ -4,7 +4,7 @@ module.exports = (client) => {
     /**
     * A simplified function to create message embeds.
     */
-    const sendembed = ({ color, title, url, author, thumb, desc, image, footer, fields, method }) => {
+    const sendembed = ({ color, title, url, author, thumb, desc, image, footer, fields, method, ping }) => {
         let embedToSend = new Discord.RichEmbed()
         .setColor(color)
         if (title !== undefined) embedToSend.setTitle(title)
@@ -20,7 +20,7 @@ module.exports = (client) => {
             })
         }
 
-        method.send({ embed: embedToSend });
+        method.send((ping ? ping : ``),{ embed: embedToSend });
     }
 
     client.sendembed = sendembed

@@ -30,7 +30,7 @@ exports.run = async (client, message, args) => { // eslint-disable-line no-unuse
 };
 
 const getChan = (message, name) => {
-    const chan = message.guild.channels.find("name", name.toLowerCase())
+    const chan = message.guild.channels.find(c => c.name === name.toLowerCase())
     if(chan === null || chan === undefined) return `**Channel Not Found (#${name})**`
     else return chan.toString()
 }
@@ -60,8 +60,8 @@ const menuInit = async (client, message, projects) => {
 
 
 
-const sendProject = (client, message, p) => {
-    let mana = (data[p.name] ? client.users.find("username", data[p.name]["manager"]) : "Unknown");
+const sendProject = (client, message, p) => {  
+    let mana = (data[p.name] ? client.users.find(u => u.username === data[p.name]["manager"]) : "Unknown");
 
 
     client.sendembed({
