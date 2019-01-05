@@ -81,16 +81,15 @@ module.exports = (client) => {
   client.welcomeNewMembers = async (member) => {
     
     let newMember = await client.users.get(member.user.id)
-    client.channels.get("524880564302381058").send(newMember.toString());
-    const guild = client.guilds.get(client.settings.serverID)
+    // client.channels.get("524880564302381058").send(newMember.toString());
 
     client.sendembed({
-      "method": client.channels.get("524880564302381058"),
+      "method": member.guild.channels.find("name", "iobot"),
       "author": ["I.O. Stream", client.user.avatarURL],
       "thumb": "https://media.discordapp.net/attachments/467378225144791051/530332456155480094/welcome.png",
       "title": `Welcome to IO Stream`,
       "color": "#ff0000",
-      "desc": `Hey _${member.user.username.toString()}_ Welcome to the I.0.Space Discord Server. We are thrilled that you have joined I.0.Stream community. Please be sure to check out the ${guild.channels.get(525565229480935424).toString()} channel and then head on over to ${guild.channels.get(530790632021557255).toString()} for more information on the project you can contribute to. If you have an questions of suggestions, please reach out to a moderator.`
+      "desc": `Hey _${member.toString()}_ Welcome to the I.0.Space Discord Server. We are thrilled that you have joined I.0.Stream community. \n\nPlease be sure to check out the ${member.guild.channels.find("name", "welcome")} channel, to learn more about us and familiarise yourself with the rules. \n\nWe then recommend that you head on over to ${member.guild.channels.find("name", "projects-overview")} for more information on the opensource projects you can contribute to. \n\nIf you have an questions of suggestions, please reach out to a ${member.guild.roles.find(role => role.name === "Moderators")}`
     })
   }
 };

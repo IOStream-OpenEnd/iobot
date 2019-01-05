@@ -12,6 +12,7 @@
   "dependencies": {
     "discord.js": "^11.4.2",
     "dotenv": "^6.2.0",
+    "moment": "^2.23.0",
     "node-fetch": "^2.3.0",
     "turndown": "^5.0.1"
   },
