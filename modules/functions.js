@@ -82,12 +82,12 @@ module.exports = (client) => {
 
     client.sendembed({
       "ping": member.toString(),
-      "method": member.guild.channels.find("name", "iobot"),
+      "method": member.guild.channels.find("name", "introductions"),
       "author": ["I.O. Stream", client.user.avatarURL],
       "thumb": "https://media.discordapp.net/attachments/467378225144791051/530332456155480094/welcome.png",
       "title": `Welcome to IO Stream`,
       "color": "#ff0000",
-      "desc": `Hey _${member.toString()}_ Welcome to the I.0.Space Discord Server. We are thrilled that you have joined I.0.Stream community. \n\nPlease be sure to check out the ${member.guild.channels.find("name", "welcome")} channel, to learn more about us and familiarise yourself with the rules. \n\nWe then recommend that you head on over to ${member.guild.channels.find("name", "projects-overview")} for more information on the opensource projects you can contribute to. \n\nIf you have an questions of suggestions, please reach out to a ${member.guild.roles.find(role => role.name === "Moderators")}`
+      "desc": `Hey _${member.toString()}_ Welcome to the I.0.Space Discord Server. We are thrilled that you have joined I.0.Stream community. \n\nPlease be sure to check out the ${member.guild.channels.find("name", "welcome_and_rules")} channel, to learn more about us and familiarise yourself with the rules. \n\nWe then recommend that you head on over to ${member.guild.channels.find("name", "projects-overview")} for more information on the opensource projects you can contribute to. \n\nIf you have an questions of suggestions, please reach out to a ${member.guild.roles.find(role => role.name === "Moderators")}`
     })
   }
 };
