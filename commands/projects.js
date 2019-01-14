@@ -66,7 +66,7 @@ const sendProject = async (client, message, p) => {
         "desc": (p.description !== null ? p.description : "No description set"),
         "thumb": (p.language !== null ? logo[p.language.toLowerCase()][0] : ``),
         "fields": [
-            ["Project Manager", (details["manager"] ? details["manager"] : `Unknown`), true],
+            ["Project Manager", (details["manager"] ? client.users.find("username", details["manager"]) : `Unknown`), true],
             ["Discussion Channel", getChan(message, p.name), true],
             ["Project Language", p.language, true],
             ["Project Status", (details["status"] ? details["status"] : `Unknown`), true],
